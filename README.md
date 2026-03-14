@@ -31,10 +31,63 @@ npx playwright install
 npm install -g allure-commandline
 ```
 
+# Huntd Testing Framework
+
+Playwright test automation framework for [Huntd](https://huntd.tech/) application.
+
+## Tech Stack
+
+- [Playwright](https://playwright.dev/) - test framework
+- [Allure](https://allurereport.org/) - test reporting
+- Node.js 20+
+
+## Project Structure
+
+```
+src/
+  components/     # Reusable UI components (Header)
+  factories/      # Test data factories (UserFactory)
+  pages/
+    base/         # BasePage class
+    auth/         # SignInPage, SignUpPage
+    candidates/   # CandidatesPage
+    home/         # HomePage
+    jobs/         # JobsPage
+tests/
+  auth/           # Sign In / Sign Up tests
+  candidates/     # Candidates page tests
+  home/           # Home page tests
+  jobs/           # Jobs page tests
+```
+
 ## How to run the tests
 
-// TODO
+### Install dependencies
+
+```bash
+npm ci
+npx playwright install
+```
+
+### Run all tests
+
+```bash
+npm run test
+```
+
+### Run in Docker
+
+```bash
+docker build -t huntd-tests .
+docker run huntd-tests
+```
 
 ## How to generate report
 
-// TODO
+### Generate and open Allure report
+
+```bash
+npm run test:report
+```
+
+Report will open automatically in your browser.
