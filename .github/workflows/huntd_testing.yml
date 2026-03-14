@@ -31,8 +31,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run tests
-        run: npx playwright test
-        continue-on-error: true
+        run: npx playwright test --reporter=allure-playwright
 
       - name: Upload Allure results
         if: always()
