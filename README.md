@@ -6,31 +6,6 @@ To see the description of the task assignment [follow the link](https://github.c
 
 This repository contains a test automation framework for the [Huntd](https://huntd.tech/) application testing.
 
-# How to use this project
-
-## Installation steps
-
-To install the project follow the next steps:
-
-1. Install Node.js.
-2. Run the installation command in the project root.:
-
-```bash
-npm ci
-```
-
-3. Run the browsers installation in the project root.
-
-```bash
-npx playwright install
-```
-
-4. Install Allure commandline tool (Allure requires Java 8 or higher).
-
-```bash
-npm install -g allure-commandline
-```
-
 # Huntd Testing Framework
 
 Playwright test automation framework for [Huntd](https://huntd.tech/) application.
@@ -38,6 +13,7 @@ Playwright test automation framework for [Huntd](https://huntd.tech/) applicatio
 ## Tech Stack
 
 - [Playwright](https://playwright.dev/) - test framework
+- [TypeScript](https://www.typescriptlang.org/) - language
 - [Allure](https://allurereport.org/) - test reporting
 - Node.js 20+
 
@@ -62,20 +38,25 @@ tests/
 
 ## How to run the tests
 
-### Install dependencies
+### 1. Install dependencies
 
 ```bash
 npm ci
+```
+
+### 2. Install Playwright browsers
+
+```bash
 npx playwright install
 ```
 
-### Run all tests
+### 3. Run all tests
 
 ```bash
 npm run test
 ```
 
-### Run in Docker
+### 4. Run in Docker
 
 ```bash
 docker build -t huntd-tests .
@@ -84,10 +65,26 @@ docker run huntd-tests
 
 ## How to generate report
 
-### Generate and open Allure report
+### 1. Run tests with Allure reporter
+
+```bash
+npx playwright test --reporter=allure-playwright
+```
+
+### 2. Generate Allure report
+
+```bash
+npx allure generate allure-results --clean -o allure-report
+```
+
+### 3. Open Allure report
+
+```bash
+npx allure open allure-report
+```
+
+### Or use the npm script (generates and opens automatically)
 
 ```bash
 npm run test:report
 ```
-
-Report will open automatically in your browser.
